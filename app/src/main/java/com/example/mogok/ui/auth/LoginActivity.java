@@ -10,7 +10,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.example.mogok.MainActivity;
+import com.example.mogok.ui.main.MainActivity;
 import com.example.mogok.api.ApiConfig;
 import com.example.mogok.api.RetrofitClient;
 
@@ -32,6 +32,8 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
+        RetrofitClient.initialize(getApplicationContext());
 
         etEmail = findViewById(R.id.etEmail);
         etPassword = findViewById(R.id.etPassword);

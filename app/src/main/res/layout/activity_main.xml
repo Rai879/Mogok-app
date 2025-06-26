@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -5,19 +6,39 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:gravity="center"
-    tools:context=".MainActivity">
+    android:padding="16dp"
+    tools:context=".ui.main.MainActivity">
 
     <TextView
+        android:id="@+id/tvWelcomeUser"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Welcome to Mogok App!"
-        android:textSize="24sp"/>
+        android:text="Welcome, User!"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:layout_marginBottom="32dp"/>
+
+    <Button
+        android:id="@+id/btnCheckout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Checkout / Point of Sale"
+        android:paddingVertical="12dp"
+        android:layout_marginBottom="16dp"/>
+
+    <Button
+        android:id="@+id/btnHistory"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Transaction History"
+        android:paddingVertical="12dp"
+        android:layout_marginBottom="16dp"/>
 
     <Button
         android:id="@+id/btnLogout"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Logout"
-        android:layout_marginTop="24dp"/>
+        style="@style/Widget.MaterialComponents.Button.TextButton"/>
 
 </LinearLayout>

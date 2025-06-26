@@ -1,6 +1,5 @@
 package com.example.mogok.api;
 
-import com.example.mogok.models.Part;
 import com.example.mogok.models.TempTransactionItem;
 import com.example.mogok.models.Transaction;
 import com.example.mogok.models.User;
@@ -21,7 +20,7 @@ import retrofit2.http.Query;
 
 public interface ApiConfig {
 
-    String BASE_URL = "http://10.0.2.2:8000/api/"; // Use your Laravel API URL
+    String BASE_URL = "http://10.0.2.2:8000/api/";
 
     // Auth
     @POST("register")
@@ -35,27 +34,27 @@ public interface ApiConfig {
 
     // Parts
     @GET("parts/search")
-    Call<List<Part>> searchParts(@Header("Authorization") String token, @Query("query") String query);
+    Call<List<com.example.mogok.models.Part>> searchParts(@Query("query") String query);
 
     @GET("parts/by-barcode/{barcode}")
-    Call<Part> getPartByBarcode(@Header("Authorization") String token, @Path("barcode") String barcode);
+    Call<com.example.mogok.models.Part> getPartByBarcode(@Path("barcode") String barcode);
 
     // Temp Transactions (Cart)
     @GET("transactions/temp")
-    Call<TempTransactionsResponse> getTempTransactions(@Header("Authorization") String token);
+    Call<TempTransactionsResponse> getTempTransactions();
 
     @POST("transactions/add-to-cart")
-    Call<AddToCartResponse> addToCart(@Header("Authorization") String token, @Body Map<String, Object> body);
+    Call<AddToCartResponse> addToCart(@Body Map<String, Object> body);
 
     @PATCH("transactions/update-cart-quantity/{tempTransactionId}")
-    Call<TempTransactionItem> updateCartQuantity(@Header("Authorization") String token, @Path("tempTransactionId") int tempTransactionId, @Body Map<String, Integer> body);
+    Call<TempTransactionItem> updateCartQuantity(@Path("tempTransactionId") int tempTransactionId, @Body Map<String, Integer> body);
 
     @DELETE("transactions/remove-from-cart/{tempTransactionId}")
-    Call<ResponseBody> removeFromCart(@Header("Authorization") String token, @Path("tempTransactionId") int tempTransactionId);
+    Call<ResponseBody> removeFromCart(@Path("tempTransactionId") int tempTransactionId);
 
     // Process Transaction
     @POST("transactions/process")
-    Call<ProcessTransactionResponse> processTransaction(@Header("Authorization") String token, @Body Map<String, Double> body);
+    Call<ProcessTransactionResponse> processTransaction(@Body Map<String, Double> body);
 
     // Transaction History
     @GET("transactions/history")
